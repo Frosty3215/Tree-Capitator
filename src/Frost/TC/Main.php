@@ -1,5 +1,5 @@
 <?php
-namespace FrostyRaptor995\FrostTreeCapitator;
+namespace aliuly\toybox;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
@@ -8,7 +8,7 @@ use pocketmine\command\CommandSender;
 use pocketmine\utils\Config;
 
 use pocketmine\event\player\PlayerQuitEvent;
-use FrostyRaptor995\FrostTreeCapitator\common\mc;
+use aliuly\toybox\common\mc;
 
 class Main extends PluginBase implements Listener {
 	protected $state;
@@ -22,8 +22,43 @@ class Main extends PluginBase implements Listener {
 			"version" => $this->getDescription()->getVersion(),
 			"modules" => [
 				"treecapitator" => true,
+				"compasstp" => true,
+				"trampoline" => true,
+				"powertool" => true,
+				"cloakclock" => true,
+				"floating-torch" => true,
+				"magic-carpet" => true,
+				"veinminer" => true,
 			],
-
+			"floating-torch" => [
+				"item" => "TORCH",
+				"block" => "TORCH",
+			],
+			"compasstp" => [
+				"item" => "COMPASS",
+			],
+			"cloakclock" => [
+				"item" => "CLOCK"
+			],
+			"powertool" => [
+				"ItemIDs" => [
+					"IRON_PICKAXE", "WOODEN_PICKAXE", "STONE_PICKAXE",
+					"DIAMOND_PICKAXE", "GOLD_PICKAXE"
+				],
+				"need-item" => true,
+				"item-wear" => 1,
+				"creative" => true,
+			],
+			"veinminer" => [
+				"ItemIDs" => [
+					"IRON_PICKAXE", "WOODEN_PICKAXE", "STONE_PICKAXE",
+					"DIAMOND_PICKAXE", "GOLD_PICKAXE"
+				],
+				"need-item" => true,
+				"item-wear" => 1,
+				"creative" => true,
+				"max-blocks" => 10,
+				"broadcast-use" => true,
 			],
 			"treecapitator" => [
 				"ItemIDs" => [
@@ -35,14 +70,33 @@ class Main extends PluginBase implements Listener {
 				"item-wear" => 1,
 				"broadcast-use" => true,
 				"creative" => true,
-			
+			],
+			"trampoline" => [
+				"blocks" => [ "SPONGE" ],
+			],
+			"magic-carpet" => [
+				"block" => "GLASS"
+			],
 		];
 		$cnt = 0;
 		$cfg=(new Config($this->getDataFolder()."config.yml",
 									  Config::YAML,$defaults))->getAll();
 		if ($cfg["modules"]["treecapitator"])
 			$this->modules[]= new TreeCapitator($this,$cfg["treecapitator"]);
-		
+		if ($cfg["modules"]["powertool"])
+			$this->modules[]= new PowerTool($this,$cfg["powertool"]);
+		if ($cfg["modules"]["trampoline"])
+			$this->modules[] = new Trampoline($this,$cfg["trampoline"]);
+		if ($cfg["modules"]["compasstp"])
+			$this->modules[] = new CompassTp($this,$cfg["compasstp"]["item"]);
+		if ($cfg["modules"]["cloakclock"])
+			$this->modules[] = new CloakClock($this,$cfg["cloakclock"]["item"]);
+		if ($cfg["modules"]["floating-torch"])
+			$this->modules[] = new TorchMgr($this,$cfg["floating-torch"]);
+		if ($cfg["modules"]["magic-carpet"])
+			$this->modules[] = new MagicCarpet($this,$cfg["magic-carpet"]["block"]);
+		if ($cfg["modules"]["veinminer"])
+			$this->modules[]= new VeinMiner($this,$cfg["veinminer"]);
 		if (count($this->modules)) {
 			$this->state = [];
 			$this->getServer()->getPluginManager()->registerEvents($this, $this);
