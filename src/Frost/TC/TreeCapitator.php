@@ -1,5 +1,5 @@
 <?php
-namespace FrostyRaptor995\FrostTreeCapitator;
+namespace aliuly\toybox;
 
 use pocketmine\command\CommandExecutor;
 use pocketmine\command\CommandSender;
@@ -31,7 +31,7 @@ class TreeCapitator extends BaseCommand implements Listener {
 
 		$this->leaves = $cfg["break-leaves"];
 		if ($cfg["need-item"]) {
-			$this->items = 120;
+			$this->items = [];
 			foreach ($cfg["ItemIDs"] as $i) {
 				$item = $this->owner->getItem($i,false,"powertool");
 				if ($item === null) continue;
@@ -73,7 +73,6 @@ class TreeCapitator extends BaseCommand implements Listener {
 
 		if (!$pl->isCreative() || !$this->creative) {
 			if ($this->items && !isset($this->items[$ev->getItem()->getId()])) {
-				echo "Not using an Axe\n"; //##DEBUG
 				return;
 			}
 		}
