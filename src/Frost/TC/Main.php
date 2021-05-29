@@ -22,7 +22,7 @@ class Main extends PluginBase implements Listener {
 			"version" => $this->getDescription()->getVersion(),
 			"modules" => [
 				"treecapitator" => true,
-			];
+			]
 			"treecapitator" => [
 				"ItemIDs" => [
 					"IRON_AXE","WOODEN_AXE", "STONE_AXE",
