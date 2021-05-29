@@ -1,0 +1,13 @@
+name: Tree Capitator
+main: Frost\TC\Main
+version: 1.0.0
+api: 3.0.0
+author: FrostyRaptor995
+description: A Tree Capitator Plugin Which Provides Chop the Tree Quickly
+website: -
+
+permissions:
+  toybox.treecapitator:
+    default: op
+    description: "Use treecapitator"
+  
