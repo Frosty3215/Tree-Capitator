@@ -1,5 +1,5 @@
 <?php
-namespace aliuly\toybox;
+namespace Frost\TC;
 
 use pocketmine\command\CommandExecutor;
 use pocketmine\command\CommandSender;
