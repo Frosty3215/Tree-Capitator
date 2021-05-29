@@ -11,7 +11,7 @@ use pocketmine\item\Item;
 use pocketmine\block\Block;
 use pocketmine\math\Vector3;
 use pocketmine\event\block\BlockBreakEvent;
-use aliuly\toybox\common\mc;
+use Frost\TC\common\mc;
 
 class TreeCapitator extends BaseCommand implements Listener {
 	protected $items;
