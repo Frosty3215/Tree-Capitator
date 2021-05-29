@@ -4,7 +4,7 @@ version: 1.0.0
 api: 3.0.0
 author: FrostyRaptor995
 description: A Tree Capitator Plugin Which Provides Chop the Tree Quickly
-website: -
+website: https://github.com/Frosty3215/Tree-Capitator
 
 permissions:
   toybox.treecapitator:
