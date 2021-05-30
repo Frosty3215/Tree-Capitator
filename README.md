@@ -1,4 +1,4 @@
-# ToyBox
+# Tree-Capitator
 Summary: A axe which can Break the tree in a few Seconds
 Dependency Plugins: N/A
 PocketMine-MP version: (API:1.0.0)
